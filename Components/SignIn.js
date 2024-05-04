@@ -16,7 +16,7 @@ const SignIn = ({ navigation }) => {
 
   const handleSignIn = () => {
     console.log("You are signing in as:", { username });
-    alert("You are signing in as:", { username });
+    // alert("You are signing in as:", { username });
 
     // Clear username and Password fields
     setUsername("");
