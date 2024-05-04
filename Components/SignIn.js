@@ -61,7 +61,7 @@ const SignIn = ({ navigation }) => {
         <Text style={styles.link}>Forgot Password?</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleRegister}>
-        <Text style={styles.link}>Register</Text>
+        <Text style={styles.link}>Not a member? Register Here</Text>
       </TouchableOpacity>
     </View>
   );
