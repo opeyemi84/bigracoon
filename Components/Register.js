@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 const Register = ({ navigation }) => {
   const [firstname, setFirstname] = useState("");
@@ -8,7 +15,7 @@ const Register = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   const handleRegister = () => {
-    alert("congrats, you are now registered!!!");
+    alert(`Welcome ${firstname}, you are now registered!!!`);
     // navigation.goBack();
 
     setFirstname("");
@@ -19,7 +26,7 @@ const Register = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Fill this form to signup</Text>
+      <Text style={styles.title}>Signup</Text>
       {/* Add form input collection details here */}
       <TextInput
         style={styles.input}

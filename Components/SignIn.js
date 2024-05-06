@@ -15,8 +15,12 @@ const SignIn = ({ navigation }) => {
   const [password, setPassword] = useState("");
 
   const handleSignIn = () => {
+    if (!username.trim() || !password.trim()) {
+      alert("Username and Password are required");
+      return;
+    }
     console.log("You are signing in as:", { username });
-    // alert("You are signing in as:", { username });
+    alert(`You are signing in as: ${username}`);
 
     // Clear username and Password fields
     setUsername("");
