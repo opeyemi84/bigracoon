@@ -46,7 +46,9 @@ const Register = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
       />
-      <Button title="Register" onPress={handleRegister} />
+      <TouchableOpacity style={styles.submitButton} onPress={handleRegister}>
+        <Text style={styles.submitButtonText}>Register</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -71,6 +73,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
+  },
+  submitButton: {
+    backgroundColor: "#7a42f4",
+    borderRadius: 5,
+    width: "100%",
+    padding: 10,
+    margin: 15,
+    height: 40,
+  },
+  submitButtonText: {
+    color: "white",
+    textAlign: "center",
   },
 });
 export default Register;
