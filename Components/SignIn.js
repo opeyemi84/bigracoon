@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,16 +11,44 @@ import {
 } from "react-native";
 
 const SignIn = ({ navigation }) => {
+  //state variables to store form inputs, errors, and form validity
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    // Trigger form validation when username and password changes
+    validateSignIn();
+  }, [username, password]);
+
+  const validateSignIn = () => {
+    let errors = {};
+
+    // Validate username field
+    if (!username) {
+      errors.username = "Username is required";
+    }
+
+    // Validate Password
+    if (!password) {
+      errors.password = "Password is required.";
+    } else if (password.length < 6) {
+      errors.password = "Password must be at least 6 characters.";
+    }
+
+    // Set the errors and update form validity
+    setErrors(errors);
+    setIsFormValid(Object.keys(errors).length === 0);
+  };
 
   const handleSignIn = () => {
-    if (!username.trim() || !password.trim()) {
-      alert("Username and Password are required");
-      return;
+    if (isFormValid) {
+      console.log(`Welcome, you are logged in as ${username}`);
+      alert(`You are signing in as: ${username}`);
+    } else {
+      console.log("Sign in has errors.");
     }
-    console.log("You are signing in as:", { username });
-    alert(`You are signing in as: ${username}`);
 
     // Clear username and Password fields
     setUsername("");
@@ -58,7 +86,11 @@ const SignIn = ({ navigation }) => {
         onChangeText={setPassword}
       />
       {/* <Button title="Sign In" onPress={handleSignIn} /> */}
-      <TouchableOpacity style={styles.submitButton} onPress={handleSignIn}>
+      <TouchableOpacity
+        style={styles.submitButton}
+        disabled={!isFormValid}
+        onPress={handleSignIn}
+      >
         <Text style={styles.submitButtonText}>Sign In</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleForgotPassword}>
@@ -67,6 +99,13 @@ const SignIn = ({ navigation }) => {
       <TouchableOpacity onPress={handleRegister}>
         <Text style={styles.link}>Not a member? Register Here</Text>
       </TouchableOpacity>
+
+      {/* Display error messages */}
+      {Object.values(errors).map((error, index) => (
+        <Text key={index} style={styles.error}>
+          {error}
+        </Text>
+      ))}
     </View>
   );
 };
@@ -116,6 +155,11 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: "white",
     textAlign: "center",
+  },
+  error: {
+    color: "red",
+    fontSize: 20,
+    marginBottom: 12,
   },
 });
 
