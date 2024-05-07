@@ -48,6 +48,7 @@ const SignIn = ({ navigation }) => {
       alert(`You are signing in as: ${username}`);
     } else {
       console.log("Sign in has errors.");
+      alert("Username and Password are required.");
     }
 
     // Clear username and Password fields
@@ -88,7 +89,7 @@ const SignIn = ({ navigation }) => {
       {/* <Button title="Sign In" onPress={handleSignIn} /> */}
       <TouchableOpacity
         style={styles.submitButton}
-        disabled={!isFormValid}
+        // disabled={!isFormValid}
         onPress={handleSignIn}
       >
         <Text style={styles.submitButtonText}>Sign In</Text>
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
   },
   error: {
     color: "red",
-    fontSize: 20,
+    fontSize: 14,
     marginBottom: 12,
   },
 });
