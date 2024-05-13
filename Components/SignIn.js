@@ -56,7 +56,7 @@ const SignIn = ({ navigation }) => {
     setPassword("");
   };
 
-  const handleForgotPassword = () => navigation.navigate("ForgotPassword");
+  const handleForgotPassword = () => navigation.navigate("Forgot Password");
   const handleRegister = () => navigation.navigate("Register");
 
   return (
