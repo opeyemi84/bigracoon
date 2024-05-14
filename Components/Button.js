@@ -18,8 +18,6 @@ const Button = () => {
   );
 };
 
-export default Button;
-
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
@@ -37,3 +35,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+export default Button;
