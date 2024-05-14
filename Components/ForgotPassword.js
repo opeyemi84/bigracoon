@@ -16,9 +16,9 @@ const ForgotPassword = () => {
   const handleResetPassword = () => {
     alert("Demo -- your password will be rest in a few minutes!!!");
 
-    setOldPassword();
-    setNewPassword();
-    setconfirmNewPassword();
+    setOldPassword("");
+    setNewPassword("");
+    setconfirmNewPassword("");
   };
   return (
     <View style={Styles.container}>
